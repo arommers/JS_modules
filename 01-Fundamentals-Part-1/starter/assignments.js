@@ -1,3 +1,5 @@
+// ===================================================================================================
+
 // LECTURE: Values and Variables
 // 1. Declare variables called 'country', 'continent' and 'population' and
 // assign their values according to your own country (population in millions)
@@ -10,6 +12,8 @@ let population = 17;
 // console.log(country);
 // console.log(continent);
 // console.log(population);
+
+// ===================================================================================================
 
 // LECTURE: Data Types
 // 1. Declare a variable called 'isIsland' and set its value according to your
@@ -27,6 +31,8 @@ console.log(population);
 console.log(isIsland);
 console.log(language);
 
+// ===================================================================================================
+
 // LECTURE: let, const and var
 // 1. Set the value of 'language' to the language spoken where you live (some
 // countries have multiple languages, but just choose one)
@@ -39,6 +45,8 @@ population = 17;
 
 console.log(language);
 console.log(population);
+
+// ===================================================================================================
 
 // LECTURE: Basic Operators
 // 1. If your country split in half, and each half would contain half the population,
@@ -72,6 +80,8 @@ console.log(population);
 //     language;
 // console.log(description);
 
+// ===================================================================================================
+
 /*  Challenge 1
     Write your code below. Good luck! 🙂 */
 
@@ -90,12 +100,16 @@ console.log(population);
 
 // console.log(markHigherBMI);
 
+// ===================================================================================================
+
 // LECTURE: Strings and Template Literals
 // 1. Recreate the 'description' variable from the last assignment, this time
 // using the template literal syntax
 
 const description = `${country} is in ${continent} and it's ${population} million people speak ${language}`;
 console.log(description);
+
+// ===================================================================================================
 
 // LECTURE: Taking Decisions: if / else Statements
 // 1. If your country's population is greater that 33 million, log a string like this to the
@@ -110,6 +124,7 @@ if (population > 33)
 else
     console.log(`${country}'s population is ${33 - population} below average`);
 
+// ===================================================================================================
 
 // Challenge 2
 
@@ -131,6 +146,8 @@ else
 // else
 //     console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`)
 
+// ===================================================================================================
+
 // LECTURE: Type Conversion and Coercion
 // 1. Predict the result of these 5 operations without executing them:
 // '9' - '5';
@@ -145,6 +162,8 @@ else
 // console.log('19' - '13' + 17);
 // console.log('123' < 57);
 // console.log(5 + 6 + '4' + 9 - 4 - 2);
+
+// ===================================================================================================
 
 // LECTURE: Equality Operators: == vs. ===
 // 1. Declare a variable 'numNeighbours' based on a prompt input like this:
@@ -165,12 +184,109 @@ else
 // 8. Reflect on why we should use the === operator and type conversion in this
 // situation
 
-const numNeighbours = Number(prompt("How many neighbouring countries does your country have?"));
+// const numNeighbours = Number(prompt("How many neighbouring countries does your country have?"));
 
- if (numNeighbours === 1)
-    console.log("Only 1 border");
-else if (numNeighbours > 1)
-    console.log('More than 1 border');
-else
-    console.log("No borders");
+//  if (numNeighbours === 1)
+//     console.log("Only 1 border");
+// else if (numNeighbours > 1)
+//     console.log('More than 1 border');
+// else
+//     console.log("No borders");
 
+//===================================================================================================
+
+// LECTURE: Logical Operators
+// 1. Comment out the previous code so the prompt doesn't get in the way
+// 2. Let's say Sarah is looking for a new country to live in. She wants to live in a
+// country that speaks english, has less than 50 million people and is not an
+// island.
+// 3. Write an if statement to help Sarah figure out if your country is right for her.
+// You will need to write a condition that accounts for all of Sarah's criteria. Take
+// your time with this, and check part of the solution if necessary.
+// 4. If yours is the right country, log a string like this: 'You should live in Portugal :)'. If
+// not, log 'Portugal does not meet your criteria :('
+// 5. Probably your country does not meet all the criteria. So go back and temporarily
+// change some variables in order to make the condition true (unless you live in
+// Canada :D)
+
+// language = 'English';
+
+// if (language === 'English' && population < 50 && !isIsland)
+//     console.log(`Sarah should live in ${country}`);
+// else
+//     console.log(`${country} " does not meet Sarah's criteria."`);
+
+//===================================================================================================
+
+// Challenge 3
+/* Write your code below. Good luck! 🙂 */
+
+// let scoreDolphins = (96 + 108 + 89) / 3;
+// let scoreKoalas = (88 + 91 + 110) / 3;
+
+// if (scoreDolphins > scoreKoalas)
+//     console.log("Dolphins win the trophy");
+// else if (scoreKoalas > scoreDolphins)
+//     console.log("Koalas win the trophy");
+// else
+//     console.log("Both win the trophy");
+
+//===================================================================================================
+
+// LECTURE: The switch Statement
+// 1. Use a switch statement to log the following string for the given 'language':
+// chinese or mandarin: 'MOST number of native speakers!'
+// spanish: '2nd place in number of native speakers'
+// english: '3rd place'
+// hindi: 'Number 4'
+// arabic: '5th most spoken language'
+// for all other simply log 'Great language too :D'
+
+// language = 'japanese';
+
+// switch(language)
+// {
+//     case 'chinese':
+//     case 'mandarin':
+//         console.log('MOST number of native speakers!');
+//         break;
+//     case 'spanish':
+//         console.log('2nd place in number of native speakers');
+//         break;
+//     case 'english':
+//         console.log('3rd place');
+//         break;
+//     case 'hindi':
+//         console.log('number 4');
+//         break;
+//     case 'arabic':
+//         console.log('5th most spoken language');
+//         break;
+//     default:
+//         console.log('Great language too :D');
+// }
+
+//===================================================================================================
+
+// LECTURE: The Conditional (Ternary) Operator
+// 1. If your country's population is greater than 33 million, use the ternary operator
+// to log a string like this to the console: 'Portugal's population is above average'.
+// Otherwise, simply log 'Portugal's population is below average'. Notice how only
+// one word changes between these two sentences!
+// 2. After checking the result, change the population temporarily to 13 and then to
+// 130. See the different results, and set the population back to original
+
+population = 13;
+
+console.log(`${country}'s population is ${population > 33 ?  "above" : "below"} average.`);
+
+//===================================================================================================
+
+// Challenge 4
+/* Write your code below. Good luck! 🙂 */
+
+const bill = 275;
+let tip = bill > 50 && bill < 300 ? bill * 0.15 : bill * 0.20;
+let total = bill + tip
+
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${total}`);

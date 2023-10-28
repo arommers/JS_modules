@@ -109,3 +109,39 @@ if (population > 33)
     console.log(`${country}'s population is above average`);
 else
     console.log(`${country}'s population is ${33 - population} below average`);
+
+
+// Challenge 2
+
+// let massMark = 78; 
+// let heightMark = 1.69;
+// let massJohn = 92;
+// let heightJohn = 1.95;
+
+// let BMIMark = massMark / (heightMark * heightMark);
+// let BMIJohn = massJohn / (heightJohn * heightJohn);
+
+// if (BMIMark > BMIJohn)
+//     console.log("Mark's BMI is higher than John's!");
+// else
+//     console.log("John's BMI is higher than Mark's!")
+
+// if (BMIMark > BMIJohn)
+//     console.log(`Mark's BMI (${BMIMark})is higher than John's (${BMIJohn})!`);
+// else
+//     console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`)
+
+// LECTURE: Type Conversion and Coercion
+// 1. Predict the result of these 5 operations without executing them:
+// '9' - '5';
+// '19' - '13' + '17';
+// '19' - '13' + 17;
+// '123' < 57;
+// 5 + 6 + '4' + 9 - 4 - 2;
+// 2. Execute the operations to check if you were right
+
+// console.log ('9' - '5');
+// console.log('19' - '13' + '17');
+// console.log('19' - '13' + 17);
+// console.log('123' < 57);
+// console.log(5 + 6 + '4' + 9 - 4 - 2);

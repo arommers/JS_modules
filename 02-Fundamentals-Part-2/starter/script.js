@@ -107,43 +107,72 @@
 
 // intro to arrays
 
-const friend1 = 'john';
-const friend2 = 'bob';
-const friend3 = 'keith';
+// const friend1 = 'john';
+// const friend2 = 'bob';
+// const friend3 = 'keith';
 
-const friends =['michael', 'bob', 'keith'];
-console.log(friends);
+// const friends =['michael', 'bob', 'keith'];
+// console.log(friends);
 
 // const years = new Array(1991, 1992, 1993);
 // console.log(years);
 
-console.log(friends[0]);
-console.log(friends[2]);
-console.log(friends.length);
-console.log(friends[friends.length -1]);
+// console.log(friends[0]);
+// console.log(friends[2]);
+// console.log(friends.length);
+// console.log(friends[friends.length -1]);
 
-friends[2] = 'jay';
-console.log(friends);
+// friends[2] = 'jay';
+// console.log(friends);
 
-const firstName = 'adri';
-const adri = [firstName, 'Rommers', 2023 - 1984, 'student', friends];
-console.log(adri);
-console.log(adri.length);
+// const firstName = 'adri';
+// const adri = [firstName, 'Rommers', 2023 - 1984, 'student', friends];
+// console.log(adri);
+// console.log(adri.length);
 
-// Exercise
+// // Exercise
 
-const calcAge = function(birthYear)
-{
-    return (2037 - birthYear);
-}
+// const calcAge = function(birthYear)
+// {
+//     return (2037 - birthYear);
+// }
 
-const years = [1990, 1967, 2002, 2010, 2018];
+// const years = [1990, 1967, 2002, 2010, 2018];
 
-const age1 = calcAge(years[0]);
-const age2 = calcAge(years[1]);
-const age3 = calcAge(years[years.length -1]);
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length -1]);
 
-const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
-console.log(ages);
+// const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
+// console.log(ages);
 
-console.log(age1, age2, age3);
+// console.log(age1, age2, age3);
+
+// basic array operations
+
+// const friends =['michael', 'bob', 'keith'];
+
+// // .push method adds elements to the end of the array
+// // and returns the array length
+// const newLength = friends.push('jay');
+// console.log(friends);
+// console.log(newLength);
+
+// // .unshift method adds elements to the start of the array
+// // and returns the array length
+// friends.unshift('john');
+// console.log(friends);
+
+// // .pop will remove the last element of the array
+// // and return the removed element;
+// friends.pop();
+// const popped = friends.pop();
+// console.log(friends);
+// console.log(popped);
+
+// friends.shift();
+// console.log(friends);
+// console.log(friends.indexOf('bob'));
+// console.log(friends.indexOf('steven'));
+
+// console.log(friends.includes('james'));

@@ -39,10 +39,10 @@
 // let holland = 18;
 // let sweden = 6;
 
-function percentageOfWorld1(population)
-{
-    return ((population / 7900) * 100);
-}
+// function percentageOfWorld1(population)
+// {
+//     return ((population / 7900) * 100);
+// }
 
 // // china = percentageOfWorld1(china);
 // // holland = percentageOfWorld1(holland);
@@ -99,22 +99,22 @@ function percentageOfWorld1(population)
 
 // Challenge 1
 /* Write your code below. Good luck! 🙂 */
-const calcAverage = (scoreOne, scoreTwo, scoreThree) => (scoreOne + scoreTwo + scoreThree) / 3; 
+// const calcAverage = (scoreOne, scoreTwo, scoreThree) => (scoreOne + scoreTwo + scoreThree) / 3; 
 
-let scoreDolphins = calcAverage(85, 54, 41);
-let scoreKoalas = calcAverage(23, 34, 27);
+// let scoreDolphins = calcAverage(85, 54, 41);
+// let scoreKoalas = calcAverage(23, 34, 27);
 
-function checkWinner(avgDolphins, avgKoalas)
-{
-    if (avgDolphins > avgKoalas && avgDolphins > avgKoalas * 2)
-        console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
-    else if (avgKoalas > avgDolphins && avgKoalas > avgDolphins * 2)
-        console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
-    else
-        console.log('No team wins');
-}
+// function checkWinner(avgDolphins, avgKoalas)
+// {
+//     if (avgDolphins > avgKoalas && avgDolphins > avgKoalas * 2)
+//         console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+//     else if (avgKoalas > avgDolphins && avgKoalas > avgDolphins * 2)
+//         console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+//     else
+//         console.log('No team wins');
+// }
 
-checkWinner(scoreDolphins, scoreKoalas);
+// checkWinner(scoreDolphins, scoreKoalas);
 
 /*======================================================================*/
 
@@ -128,13 +128,41 @@ checkWinner(scoreDolphins, scoreKoalas);
 //    Use the function 'percentageOfWorld1'
 //    that you created earlier to compute the 4 percentage values
 
-const populations = [1441, 241, 18, 5];
-console.log (populations.length === 5);
+// const populations = [1441, 241, 18, 5];
+// console.log (populations.length === 5);
 
-const percentages = [
-percentageOfWorld1(populations[0]),
-percentageOfWorld1(populations[1]),
-percentageOfWorld1(populations[2]),
-percentageOfWorld1(populations[populations.length -1])
-];
-console.log(percentages);
+// const percentages = [
+// percentageOfWorld1(populations[0]),
+// percentageOfWorld1(populations[1]),
+// percentageOfWorld1(populations[2]),
+// percentageOfWorld1(populations[populations.length -1])
+// ];
+// console.log(percentages);
+
+/*======================================================================*/
+
+// LECTURE: Basic Array Operations (Methods)
+// 1. Create an array containing all the neighbouring countries of a country of your
+// choice. Choose a country which has at least 2 or 3 neighbours. Store the array
+// into a variable called 'neighbours'
+// 2. At some point, a new country called 'Utopia' is created in the neighbourhood of
+// your selected country. So add it to the end of the 'neighbours' array
+// 3. Unfortunately, after some time, the new country is dissolved. So remove it from
+// the end of the array
+// 4. If the 'neighbours' array does not include the country ‘Germany’, log to the
+// console: 'Probably not a central European country :D'
+// 5. Change the name of one of your neighbouring countries. To do that, find the
+// index of the country in the 'neighbours' array, and then use that index to
+// change the array at that index position. For example, you can search for
+// 'Sweden' in the array, and then replace it with 'Republic of Sweden'
+
+const neighbours = ['germany', 'belgium'];
+console.log(neighbours);
+neighbours.push('utopia');
+console.log(neighbours);
+neighbours.pop();
+console.log(neighbours);
+if (!neighbours.includes('germany'))
+    console.log('Probably not a central European country :D');
+neighbours[neighbours.indexOf('germany')] = 'republic of germans';
+console.log(neighbours);

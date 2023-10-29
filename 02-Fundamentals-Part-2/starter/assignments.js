@@ -54,9 +54,20 @@ const percent2 = function(population)
     return ((population / 7900) * 100);
 }
 
-let chinapop = percent2(china);
-let hollandpop = percent2(holland);
-let swedpop = percent2(sweden);
-console.log(chinapop, hollandpop, swedpop);
+// let chinapop = percent2(china);
+// let hollandpop = percent2(holland);
+// let swedpop = percent2(sweden);
+// console.log(chinapop, hollandpop, swedpop);
 
 /*======================================================================*/
+
+// LECTURE: Arrow Functions
+// 1. Recreate the last assignment, but this time create an arrow function called
+// 'percentageOfWorld3'
+
+const percentageOfWorld3 = population => (population/ 7900) * 100;
+
+let chinapop = percentageOfWorld3(china);
+let hollandpop = percentageOfWorld3(holland);
+let swedpop = percentageOfWorld3(sweden);
+console.log(chinapop, hollandpop, swedpop);

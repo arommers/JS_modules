@@ -156,13 +156,34 @@
 // change the array at that index position. For example, you can search for
 // 'Sweden' in the array, and then replace it with 'Republic of Sweden'
 
-const neighbours = ['germany', 'belgium'];
-console.log(neighbours);
-neighbours.push('utopia');
-console.log(neighbours);
-neighbours.pop();
-console.log(neighbours);
-if (!neighbours.includes('germany'))
-    console.log('Probably not a central European country :D');
-neighbours[neighbours.indexOf('germany')] = 'republic of germans';
-console.log(neighbours);
+// const neighbours = ['germany', 'belgium'];
+// console.log(neighbours);
+// neighbours.push('utopia');
+// console.log(neighbours);
+// neighbours.pop();
+// console.log(neighbours);
+// if (!neighbours.includes('germany'))
+//     console.log('Probably not a central European country :D');
+// neighbours[neighbours.indexOf('germany')] = 'republic of germans';
+// console.log(neighbours);
+
+/*======================================================================*/
+
+const calcTip = function(value)
+{
+    if (value >= 50 && value <= 300)
+        return (value * 0.15);
+    else
+        return (value * 0.20);
+}
+
+const bills = [125, 555, 44];
+const tips = [calcTip(125), calcTip(555), calcTip(44)];
+const totals = [
+    bills[0] + tips[0],
+    bills[1] + tips[1],
+    bills[2] + tips[2],
+    ];
+console.log(bills);
+console.log(tips);
+console.log(totals);

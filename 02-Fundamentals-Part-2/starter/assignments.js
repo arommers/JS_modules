@@ -35,24 +35,24 @@
 // 'percentageOfWorld2', and also call it with 3 country populations (can be
 // the same populations)
 
-let china = 1441;
-let holland = 18;
-let sweden = 6;
+// let china = 1441;
+// let holland = 18;
+// let sweden = 6;
 
-function percentageOfWorld1(population)
-{
-    return ((population / 7900) * 100);
-}
+// function percentageOfWorld1(population)
+// {
+//     return ((population / 7900) * 100);
+// }
 
-// china = percentageOfWorld1(china);
-// holland = percentageOfWorld1(holland);
-// sweden = percentageOfWorld1(sweden);
-// console.log(china, holland, sweden);
+// // china = percentageOfWorld1(china);
+// // holland = percentageOfWorld1(holland);
+// // sweden = percentageOfWorld1(sweden);
+// // console.log(china, holland, sweden);
 
-const percent2 = function(population)
-{
-    return ((population / 7900) * 100);
-}
+// const percent2 = function(population)
+// {
+//     return ((population / 7900) * 100);
+// }
 
 // let chinapop = percent2(china);
 // let hollandpop = percent2(holland);
@@ -65,12 +65,12 @@ const percent2 = function(population)
 // 1. Recreate the last assignment, but this time create an arrow function called
 // 'percentageOfWorld3'
 
-const percentageOfWorld3 = population => (population/ 7900) * 100;
+// const percentageOfWorld3 = population => (population/ 7900) * 100;
 
-let chinapop = percentageOfWorld3(china);
-let hollandpop = percentageOfWorld3(holland);
-let swedpop = percentageOfWorld3(sweden);
-console.log(chinapop, hollandpop, swedpop);
+// let chinapop = percentageOfWorld3(china);
+// let hollandpop = percentageOfWorld3(holland);
+// let swedpop = percentageOfWorld3(sweden);
+// console.log(chinapop, hollandpop, swedpop);
 
 /*======================================================================*/
 
@@ -83,16 +83,38 @@ console.log(chinapop, hollandpop, swedpop);
 // 'percentageOfWorld1' you created earlier
 // 3. Call 'describePopulation' with data for 3 countries of your choice
 
-const description = function(country, population)
-{
-    const percent = percentageOfWorld1(population);
-    const description = (`${country} has ${population} million people, which is about ${percent}
-    of the world's population`);
-    console.log(description);
-}
+// const description = function(country, population)
+// {
+//     const percent = percentageOfWorld1(population);
+//     const description = (`${country} has ${population} million people, which is about ${percent}
+//     of the world's population`);
+//     console.log(description);
+// }
 
-description('china', 1441);
-description('usa', 241);
-description('sweden', 5);
+// description('china', 1441);
+// description('usa', 241);
+// description('sweden', 5);
 
 /*======================================================================*/
+
+// Challenge 1
+/* Write your code below. Good luck! 🙂 */
+const calcAverage = (scoreOne, scoreTwo, scoreThree) => (scoreOne + scoreTwo + scoreThree) / 3; 
+
+let scoreDolphins = calcAverage(85, 54, 41);
+let scoreKoalas = calcAverage(23, 34, 27);
+
+function checkWinner(avgDolphins, avgKoalas)
+{
+    if (avgDolphins > avgKoalas && avgDolphins > avgKoalas * 2)
+        console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+    else if (avgKoalas > avgDolphins && avgKoalas > avgDolphins * 2)
+        console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+    else
+        console.log('No team wins');
+}
+
+checkWinner(scoreDolphins, scoreKoalas);
+
+/*======================================================================*/
+

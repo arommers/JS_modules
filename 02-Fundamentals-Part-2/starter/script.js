@@ -11,24 +11,44 @@
 
 // Calling, running or invoking the function
 
-function logger()
+// function logger()
+// {
+//     console.log("My name is Adri");
+// }
+
+// logger();
+// logger();
+// logger();
+
+// function fruitProcessor(apples, oranges)
+// {
+//     const juice = `Juice with ${apples} apples and ${oranges} oranges`;
+//     return (juice);
+// }
+
+// const applejuice = fruitProcessor(5, 0);
+// console.log(applejuice);
+// console.log(fruitProcessor(5, 0));
+
+// const appleOrangeJuice = fruitProcessor(2, 4);
+// console.log(appleOrangeJuice);
+
+// function declaration
+const age1 = calcAge1(1991);
+
+function calcAge1(birtYear)
 {
-    console.log("My name is Adri");
+    return (2037 - birtYear)
 }
 
-logger();
-logger();
-logger();
+console.log(age1);
 
-function fruitProcessor(apples, oranges)
+// function expression
+
+const calcAge2 = function(birthYear)
 {
-    const juice = `Juice with ${apples} apples and ${oranges} oranges`;
-    return (juice);
+    return (2037 - birthYear);
 }
 
-const applejuice = fruitProcessor(5, 0);
-console.log(applejuice);
-console.log(fruitProcessor(5, 0));
-
-const appleOrangeJuice = fruitProcessor(2, 4);
-console.log(appleOrangeJuice);
+const age2 = calcAge2(1992);
+console.log(age2);

@@ -71,3 +71,28 @@ let chinapop = percentageOfWorld3(china);
 let hollandpop = percentageOfWorld3(holland);
 let swedpop = percentageOfWorld3(sweden);
 console.log(chinapop, hollandpop, swedpop);
+
+/*======================================================================*/
+
+// LECTURE: Functions Calling Other Functions
+// 1. Create a function called 'describePopulation'. Use the function type you
+// like the most. This function takes in two arguments: 'country' and
+// 'population', and returns a string like this: 'China has 1441 million people,
+// which is about 18.2% of the world.'
+// 2. To calculate the percentage, 'describePopulation' call the
+// 'percentageOfWorld1' you created earlier
+// 3. Call 'describePopulation' with data for 3 countries of your choice
+
+const description = function(country, population)
+{
+    const percent = percentageOfWorld1(population);
+    const description = (`${country} has ${population} million people, which is about ${percent}
+    of the world's population`);
+    console.log(description);
+}
+
+description('china', 1441);
+description('usa', 241);
+description('sweden', 5);
+
+/*======================================================================*/

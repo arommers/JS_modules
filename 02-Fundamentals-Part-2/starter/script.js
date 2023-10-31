@@ -185,3 +185,24 @@ const adri =
     job: 'Student',
     friends: ['John', 'Bob', 'Piet'],
 };
+
+console.log(adri.lastName);
+console.log(adri['lastName']);
+
+const nameKey = 'Name';
+console.log(adri['first' + nameKey]);
+console.log(adri['last' + nameKey]);
+
+const result = prompt('What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
+
+if (adri[result])
+    console.log(adri[result]);
+else
+    console.log('Wrong request. What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
+
+adri.location = 'The Netherlands';
+adri['music'] = 'rock';
+
+console.log(adri);
+
+console.log(`${adri.firstName} has ${adri.friends.length} friends and his best friend is ${adri.friends[0]}`);

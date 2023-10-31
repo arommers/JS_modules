@@ -176,3 +176,12 @@
 // console.log(friends.indexOf('steven'));
 
 // console.log(friends.includes('james'));
+
+const adri =
+{
+    firstName: 'Adri',
+    lastName: 'Rommers',
+    age: 2037 - 1984,
+    job: 'Student',
+    friends: ['John', 'Bob', 'Piet'],
+};

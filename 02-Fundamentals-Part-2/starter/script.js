@@ -181,28 +181,96 @@ const adri =
 {
     firstName: 'Adri',
     lastName: 'Rommers',
-    age: 2037 - 1984,
+    birtYear: 1984,
     job: 'Student',
     friends: ['John', 'Bob', 'Piet'],
+    hasDriversLicense: false,
+
+    calcAge: function()
+    {
+        this.age = 2037 - this.birtYear;
+        return (this.age);
+    },
+    getSummary: function()
+    {
+        this.summary = `${this.firstName} is a ${this.calcAge()}
+        year old ${this.job} and ${this.hasDriversLicense ? 'has a drivers license': 'doesnt have a drivers license'}`;
+        return (this.summary);
+    },
+    // calcAge: function()
+    // {
+    //     // console.log(this);
+    //     return (2037 - this.birtYear);
+    // }    
+
+    // calcAge: function(birthYear)
+    // {
+    //     return (2037 - birthYear);
+    // }
 };
 
-console.log(adri.lastName);
-console.log(adri['lastName']);
+// console.log(adri.lastName);
+// console.log(adri['lastName']);
 
-const nameKey = 'Name';
-console.log(adri['first' + nameKey]);
-console.log(adri['last' + nameKey]);
+// const nameKey = 'Name';
+// console.log(adri['first' + nameKey]);
+// console.log(adri['last' + nameKey]);
 
-const result = prompt('What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
+// const result = prompt('What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
 
-if (adri[result])
-    console.log(adri[result]);
+// if (adri[result])
+//     console.log(adri[result]);
+// else
+//     console.log('Wrong request. What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
+
+// adri.location = 'The Netherlands';
+// adri['music'] = 'rock';
+
+// console.log(adri);
+
+// console.log(`${adri.firstName} has ${adri.friends.length} friends and his best friend is ${adri.friends[0]}`);
+
+console.log(adri.calcAge());
+// console.log(adri['calcAge'](adri.birtYear));
+console.log(adri.age);
+console.log(adri.getSummary());
+
+// Challenge
+// Adri is a 39 yeard old student and he has a drivers license.
+
+// Coding Challenge nr. 3
+/* Write your code below. Good luck! 🙂 */
+
+const mark =
+{
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    
+    calcBMI: function()
+    {
+        this.bmi = this.mass / (this.height * this.height)
+        return (this.bmi);
+    }
+}
+
+const john =
+{
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    
+    calcBMI: function()
+    {
+        this.bmi = this.mass / (this.height * this.height);
+        return (this.bmi);
+    }
+}
+
+mark.calcBMI();
+john.calcBMI();
+
+if (john.bmi > mark.bmi)
+    console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`);
 else
-    console.log('Wrong request. What do you want to know about Adri Choose between firstname, lastname, age, job and friends');
-
-adri.location = 'The Netherlands';
-adri['music'] = 'rock';
-
-console.log(adri);
-
-console.log(`${adri.firstName} has ${adri.friends.length} friends and his best friend is ${adri.friends[0]}`);
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`)

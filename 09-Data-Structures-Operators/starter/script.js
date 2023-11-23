@@ -42,21 +42,21 @@ const {
   tags} = restaurant;
 console.log(restaurantName, hours, tags);
 
-// Default values
-const {
-  menu = [],
-  starterMenu: starters = [],
-} = restaurant;
+// // Default values
+// const {
+//   menu = [],
+//   starterMenu: starters = [],
+// } = restaurant;
 
-console.log(menu, starters);
+// console.log(menu, starters);
 
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = {a: 23, b: 7, c: 14};
+// // Mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = {a: 23, b: 7, c: 14};
 
-({a, b} = obj);
-console.log(a, b);
+// ({a, b} = obj);
+// console.log(a, b);
 
 // const arr = [2, 3, 4];
 // const a = arr[0];
@@ -97,3 +97,32 @@ console.log(a, b);
 // // Default value
 // const [p = 1, q = 1, r = 1] = [8];
 // console.log(p, q, r);
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+console.log(1, 2, 7, 8, 9);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 or more array
+
+const menu = [...restaurant.mainMenu, ... restaurant.starterMenu];
+console.log(menu);
+
+// Iterables are array, strings, maps and sets, but not objects
+
+const str = 'Adri';
+const letters = [...str, ' ', 'R.'];
+console.log(letters);
+console.log(...str);

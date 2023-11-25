@@ -16,6 +16,10 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[MainIndex]];
   },
 
+  orderPasta: function(ing1, ing2, ing3) {
+    console.log(`here is your delicious pasta made from ${ing1}, ${ing2} and ${ing3}!`);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -98,31 +102,51 @@ console.log(restaurantName, hours, tags);
 // const [p = 1, q = 1, r = 1] = [8];
 // console.log(p, q, r);
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-console.log(...newArr);
-console.log(1, 2, 7, 8, 9);
+// console.log(...newArr);
+// console.log(1, 2, 7, 8, 9);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy array
+// // Copy array
 
-const mainMenuCopy = [...restaurant.mainMenu];
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-// Join 2 or more array
+// // Join 2 or more array
 
-const menu = [...restaurant.mainMenu, ... restaurant.starterMenu];
-console.log(menu);
+// const menu = [...restaurant.mainMenu, ... restaurant.starterMenu];
+// console.log(menu);
 
-// Iterables are array, strings, maps and sets, but not objects
+// // Iterables are array, strings, maps and sets, but not objects
 
-const str = 'Adri';
-const letters = [...str, ' ', 'R.'];
-console.log(letters);
-console.log(...str);
+// const str = 'Adri';
+// const letters = [...str, ' ', 'R.'];
+// console.log(letters);
+// console.log(...str);
+
+// Real world examples
+// const ingredients = [
+//   prompt('Let\'s make pasta! Ingredient 1?'),
+//   prompt('Let\'s make pasta! Ingredient 2?'),
+//   prompt('Let\'s make pasta! Ingredient 3?')
+// ];
+
+// console.log(ingredients);
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Giuseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Poop House';
+console.log(restaurant.name);
+console.log(restaurantCopy.name);

@@ -41,33 +41,41 @@ const restaurant = {
   },
 };
 
-console.log('------ OR ------');
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
 
-// Use ANY data type, return ANY data type, short-circuiting
-console.log(3 || 'Jonas');
-console.log(' ' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
+// nullish: null and undefined
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
 
-console.log(undefined || 0 || '' || 'Hello' || null || 23);
+// console.log('------ OR ------');
 
-// restaurant.numGuests = 23;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
+// // Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || 'Jonas');
+// console.log(' ' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log('------ AND ------');
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
+// console.log(undefined || 0 || '' || 'Hello' || null || 23);
 
-console.log('Hello' && 23 && null && 'jonas');
+// // restaurant.numGuests = 23;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
 
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('dough', 'tomato');
-}
+// console.log('------ AND ------');
+// console.log(0 && 'Jonas');
+// console.log(7 && 'Jonas');
 
-restaurant.orderPizza && restaurant.orderPizza('poop', 'pee');
+// console.log('Hello' && 23 && null && 'jonas');
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('dough', 'tomato');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('poop', 'pee');
 
 // Rest Pattern and Parameters
 

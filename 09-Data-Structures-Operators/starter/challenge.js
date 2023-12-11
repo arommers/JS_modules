@@ -44,7 +44,8 @@ const game = {
 // 1. Create one player array for each team(variables'players1'and 'players2')
 
 const [players1, players2] = game.players;
-console.log(players1, players2);
+console.log(players1);
+console.log(players2);
 
 // 2. The first player in any player array is the goalkeeper
 // and the others are field players. For Bayern Munich (team 1) create one variable ('gk')
@@ -67,34 +68,24 @@ console.log(players1Final);
 
 // 5. Based on the game.odds object, create one variable for each odd(called 'team1', 'draw' and 'team2')
 
-// const team1 = game.odds.team1;
-// const team2 = game.odds.team2;
-// const draw = game.odds.x;
-
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+const {team1, x: draw, team2} = {...game.odds};
+console.log(team1, team2, draw);
 
 // 6. Write a function('printGoals') that receives an arbitrary number of player names
 // (not an array) and prints each of them to the console, along with the number of goals
 //  that were scored in total (number of player names passed in)
 
-const printGoals = function (...players) {
-    console.log(players.length);
-    
-    let i = 0;
-    while (i < players.length)
-        console.log(`${players[i++]}`);
-};
-
-printGoals('Thiago', 'Neuer', 'Piet');
-printGoals(...game.scored);
+const printGoals = function (...names)
+{
+  console.log(`${names.length} goals were scored!`);
+  console.log(...names);
+}
+printGoals('Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels');
 
 // 7. The team with the lower odd is more likely to win. 
 // Print to the console which team is more likely to win, 
 // without using an if/else statement or the ternary operator.
 
-team1 < team2 && console.log('Team 1 is more likely to win');
+team1 < team2 && console.log ('team 1 is more likely to win');
+team2 < team1 && console.log ('team 2 is more likely to win');
 
-team1 > team2 || console.log('Team 2 is more likely to win');

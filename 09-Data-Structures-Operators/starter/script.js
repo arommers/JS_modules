@@ -41,36 +41,84 @@ const restaurant = {
   },
 };
 
-const rest1 = {
-  name: 'Poop',
-  numGuests: 0,
-};
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
 
-const rest2 = {
-  name: 'Piss',
-  owner: 'Pisshead',
-};
+console.log(ordersSet);
+console.log(new Set('Jonas'));
 
-// OR assignment operator
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
 
-// rest1.numGuests ||= 10;
-// rest2.numGuests ||= 10;
+for (const order of ordersSet) console.log(order);
 
-// nullish assignment operator (null or undefined)
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// Example removing duplicates from an array
 
-// AND assignment operator
-// rest1.owner = rest1.owner && '<ANONYMOUS>';
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
+const staff = [
+  'Waiter',
+  'Chef',
+  'Waiter',
+  'Manager',
+  'Chef',
+  'Waiter'
+];
 
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+const staffList = [...new Set (staff)];
+console.log(staff);
+console.log(staffList);
+console.log(new Set([
+  'Waiter',
+  'Chef',
+  'Waiter',
+  'Manager',
+  'Chef',
+  'Waiter'
+]).size);
 
-console.log(rest1);
-console.log(rest2);
+console.log(new Set('Adri').size);
+
+// const rest1 = {
+//   name: 'Poop',
+//   numGuests: 0,
+// };
+
+// const rest2 = {
+//   name: 'Piss',
+//   owner: 'Pisshead',
+// };
+
+// // OR assignment operator
+// // rest1.numGuests = rest1.numGuests || 10;
+// // rest2.numGuests = rest2.numGuests || 10;
+
+// // rest1.numGuests ||= 10;
+// // rest2.numGuests ||= 10;
+
+// // nullish assignment operator (null or undefined)
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// // AND assignment operator
+// // rest1.owner = rest1.owner && '<ANONYMOUS>';
+// // rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
+
+// console.log(rest1);
+// console.log(rest2);
 
 // restaurant.numGuests = 0;
 // const guests = restaurant.numGuests || 10;

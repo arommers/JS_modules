@@ -79,29 +79,51 @@
 
 // oneWord and upperFirstWord are callback functions
 
-const oneWord = function(str) {
-    return str.replace(/ /g, '').toLowerCase();
+// const oneWord = function(str) {
+//     return str.replace(/ /g, '').toLowerCase();
+// }
+
+// const upperFirstWord = function(str) {
+//     const [first, ...others] = str.split(' ');
+//     return ([first.toUpperCase(), ...others].join(' '));
+// }
+
+// // Higher Order Function
+// const transformer = function (str, func) {
+//     console.log(`Original string: ${str}`);
+//     console.log(`Transformed string: ${func(str)}`);
+//     console.log(`Transformed by ${func.name}`);
+// }
+
+// transformer("javascript is the best", upperFirstWord);
+// transformer("javascript is the best", oneWord);
+
+// const highFive = function() {
+//     console.log("🙌".repeat(5));
+// }
+
+// document.body.addEventListener('click', highFive);
+
+// ['Adri', 'Snoet', 'Poes'].forEach(highFive);
+
+// ------------------------------------------------
+// 133 Functions Returning Functions
+// ------------------------------------------------
+
+const greet = function(greeting) {
+    return (function(name) {
+        console.log(`${greeting} ${name}`)
+    });
 }
 
-const upperFirstWord = function(str) {
-    const [first, ...others] = str.split(' ');
-    return ([first.toUpperCase(), ...others].join(' '));
-}
+// greeterhey stores the function that is returned from greet
+const greeterHey = greet('hey');
+greeterHey('Adri');
+greeterHey('Poes');
 
-// Higher Order Function
-const transformer = function (str, func) {
-    console.log(`Original string: ${str}`);
-    console.log(`Transformed string: ${func(str)}`);
-    console.log(`Transformed by ${func.name}`);
-}
+greet('Hello')('Adri');
 
-transformer("javascript is the best", upperFirstWord);
-transformer("javascript is the best", oneWord);
+// The greet function as arrow functions
+const arrowGreet = greeting => name => console.log(`${greeting} ${name}`);
 
-const highFive = function() {
-    console.log("🙌".repeat(5));
-}
-
-document.body.addEventListener('click', highFive);
-
-['Adri', 'Snoet', 'Poes'].forEach(highFive);
+arrowGreet('Hello')('Snoet');

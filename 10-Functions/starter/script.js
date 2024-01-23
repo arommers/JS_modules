@@ -110,20 +110,72 @@
 // 133 Functions Returning Functions
 // ------------------------------------------------
 
-const greet = function(greeting) {
-    return (function(name) {
-        console.log(`${greeting} ${name}`)
-    });
+// const greet = function(greeting) {
+//     return (function(name) {
+//         console.log(`${greeting} ${name}`)
+//     });
+// }
+
+// // greeterhey stores the function that is returned from greet
+// const greeterHey = greet('hey');
+// greeterHey('Adri');
+// greeterHey('Poes');
+
+// greet('Hello')('Adri');
+
+// // The greet function as arrow functions
+// const arrowGreet = greeting => name => console.log(`${greeting} ${name}`);
+
+// arrowGreet('Hello')('Snoet');
+
+// ------------------------------------------------
+// 134 Call and Apply
+// ------------------------------------------------
+
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline}, flight ${ this.iataCode}${flightNum}`);
+        this.bookings.push({flight: `${this.iataCode}${flightNum}`, name });
+    }
 }
 
-// greeterhey stores the function that is returned from greet
-const greeterHey = greet('hey');
-greeterHey('Adri');
-greeterHey('Poes');
+lufthansa.book(123, 'Adri Rommers');
+lufthansa.book(666, 'John Smith');
+console.log(lufthansa);
 
-greet('Hello')('Adri');
+const eurowings = {
+    airline: 'EuroWings',
+    iataCode: 'EW',
+    bookings: [],
+}
 
-// The greet function as arrow functions
-const arrowGreet = greeting => name => console.log(`${greeting} ${name}`);
+const book = lufthansa.book;[]
 
-arrowGreet('Hello')('Snoet');
+// invalid version
+// book(23, 'Sarah Williams');
+
+//Call method
+
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 123, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+    airline: 'Swiss Air Line',
+    iataCode: 'LX',
+    bookings: []
+};
+
+book.call(swiss, 583, 'Snoet de Poes');
+
+// Apply method
+
+const flightData = [583, 'George'];
+book.apply(swiss, flightData);
+book.call(swiss, ...flightData);
+console.log(swiss);

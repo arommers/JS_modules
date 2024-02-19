@@ -216,34 +216,49 @@
 // console.log(addVat(100));
 // console.log(addVat(23));
 
-const poll =
+// const poll =
+// {
+//     question: 'What is your favorite programming language?',
+//     options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
+//     answers: new Array(4).fill(0),
+//     registerNewAnswer()
+//     {
+//         const answer = Number(prompt(`${this.question}\n${this.options.join('\n')}`));
+
+//         console.log(answer);
+
+//         typeof answer === 'number' && answer < this.options.length && this.answers[answer]++;
+
+//         this.displayResults();
+//         this.displayResults('string');
+//     },
+//     displayResults(type = 'array')
+//     {
+//         if (type === 'array')
+//             console.log(this.answers);
+//         else if (type === 'string')
+//             console.log(`Poll results are ${this.answers.join(', ')}`)
+//     }
+// };
+
+// document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// poll.displayResults.call({answers: [5, 2, 3] }, 'string');
+// poll.displayResults.call({answers: [5, 2, 3] });
+
+
+
+const runOnce = function()
 {
-    question: 'What is your favorite programming language?',
-    options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
-    answers: new Array(4).fill(0),
-    registerNewAnswer()
-    {
-        const answer = Number(prompt(`${this.question}\n${this.options.join('\n')}`));
-
-        console.log(answer);
-
-        typeof answer === 'number' && answer < this.options.length && this.answers[answer]++;
-
-        this.displayResults();
-        this.displayResults('string');
-    },
-    displayResults(type = 'array')
-    {
-        if (type === 'array')
-            console.log(this.answers);
-        else if (type === 'string')
-            console.log(`Poll results are ${this.answers.join(', ')}`)
-    }
+    console.log('This will never run again!');
 };
+runOnce();
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+// Immediately invoked function expressions
+(function()
+{
+    console.log('This will never run again!');
+})();
 
-poll.displayResults.call({answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({answers: [5, 2, 3] });
-
+(() => console.log('This will never run again!'))();
 

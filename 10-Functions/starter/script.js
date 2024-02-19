@@ -248,17 +248,88 @@
 
 
 
-const runOnce = function()
+// const runOnce = function()
+// {
+//     console.log('This will never run again!');
+// };
+// runOnce();
+
+// // Immediately invoked function expressions
+// (function()
+// {
+//     console.log('This will never run again!');
+// })();
+
+// (() => console.log('This will never run again!'))();
+
+// CLOSURES
+
+const secureBooking = function ()
 {
-    console.log('This will never run again!');
-};
-runOnce();
+    let passengerCount = 0;
 
-// Immediately invoked function expressions
-(function()
+    return function()
+    {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    }
+}
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker)
+
+// EXAMPLE 1
+
+let f;
+
+const g = function()
 {
-    console.log('This will never run again!');
-})();
+    const a = 23;
+    f = function ()
+    {
+        console.log(a * 2);
+    }
+}
 
-(() => console.log('This will never run again!'))();
+const h = function ()
+{
+    const b = 777;
+    f = function ()
+    {
+        console.log(b * 2);
+    }
+}
 
+// f closes over g
+g();
+f();
+console.dir(f);
+
+
+// Re-assigned f function. it closed over the vriable environment of h
+h();
+f();
+console.dir(f);
+
+// EXAMPLE 2
+
+const boardpassengers = function (n, wait)
+{
+    const perGRoup = n / 3;
+
+    setTimeout(function()
+    {
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are three groups, each with ${perGRoup} passengers`);     
+    }, wait * 1000);
+
+    console.log(`Will start boarding in ${wait} seconds`);
+}
+
+const perGRoup = 1000;
+boardpassengers(180, 3);

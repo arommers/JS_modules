@@ -85,20 +85,41 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
 // })
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-currencies.forEach(function(value, key, map)
+// currencies.forEach(function(value, key, map)
+// {
+//   console.log(`${key}:  ${value}`);
+// });
+
+// const currenciesSet = new Set(['USD', 'GBP', 'EUR', 'USD', 'EUR']);
+
+// currenciesSet.forEach(function(value, key, set)
+// {
+//   console.log(`${key}: ${value}`);
+// });
+
+const checkDogs = function(dogsJulia, dogsKate)
 {
-  console.log(`${key}:  ${value}`);
-});
+  const copyJulia = dogsJulia.slice(1, -2);
+  const both = [...copyJulia, ...dogsKate];
+  both.forEach(function(value, i)
+  {
+    if (value > 2)
+      console.log(`Dog number ${i + 1} is an adult, and is ${value} years old"`);
+    else
+      console.log(`Dog number ${i + 1} is still a puppy 🐶`);
+  });
+};
 
-const currenciesSet = new Set(['USD', 'GBP', 'EUR', 'USD', 'EUR']);
+// let julia = [3, 5, 2, 12, 7];
+// let kate = [4, 1, 15, 8, 3]
 
-currenciesSet.forEach(function(value, key, set)
-{
-  console.log(`${key}: ${value}`);
-});
+let julia = [9, 16, 6, 8, 3];
+let kate = [10, 5, 6, 1, 4];
+
+checkDogs(julia, kate);

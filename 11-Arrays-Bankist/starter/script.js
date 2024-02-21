@@ -103,23 +103,42 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //   console.log(`${key}: ${value}`);
 // });
 
-const checkDogs = function(dogsJulia, dogsKate)
-{
-  const copyJulia = dogsJulia.slice(1, -2);
-  const both = [...copyJulia, ...dogsKate];
-  both.forEach(function(value, i)
-  {
-    if (value > 2)
-      console.log(`Dog number ${i + 1} is an adult, and is ${value} years old"`);
-    else
-      console.log(`Dog number ${i + 1} is still a puppy 🐶`);
-  });
-};
+// const checkDogs = function(dogsJulia, dogsKate)
+// {
+//   const copyJulia = dogsJulia.slice(1, -2);
+//   const both = [...copyJulia, ...dogsKate];
+//   both.forEach(function(value, i)
+//   {
+//     if (value > 2)
+//       console.log(`Dog number ${i + 1} is an adult, and is ${value} years old"`);
+//     else
+//       console.log(`Dog number ${i + 1} is still a puppy 🐶`);
+//   });
+// };
 
 // let julia = [3, 5, 2, 12, 7];
 // let kate = [4, 1, 15, 8, 3]
 
-let julia = [9, 16, 6, 8, 3];
-let kate = [10, 5, 6, 1, 4];
+// let julia = [9, 16, 6, 8, 3];
+// let kate = [10, 5, 6, 1, 4];
 
-checkDogs(julia, kate);
+// checkDogs(julia, kate);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurTousd = 1.1;
+
+const movementsUSD = movements.map(mov => mov * eurTousd);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements)
+  movementsUSDfor.push(mov * eurTousd);
+console.log(movementsUSDfor);
+
+const moveDescrip = movements.map(
+  (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`);
+
+console.log(moveDescrip);

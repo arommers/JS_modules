@@ -124,7 +124,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // checkDogs(julia, kate);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const eurTousd = 1.1;
 
@@ -154,17 +154,33 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //   .join('');
 
 
-const createUserNames = function(acc)
-{
-  acc.forEach(function(acc)
-  {
-    acc.username = acc.owner
-    .toLocaleLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  });
-};
+// const createUserNames = function(acc)
+// {
+//   acc.forEach(function(acc)
+//   {
+//     acc.username = acc.owner
+//     .toLocaleLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   });
+// };
 
-console.log(createUserNames(accounts));
-console.log(accounts);
+// console.log(createUserNames(accounts));
+// console.log(accounts);
+
+const deposits = movements.filter(function(mov)
+{
+  return mov > 0;
+})
+
+console.log(movements);
+console.log(deposits);
+
+const depositedFor = [];
+
+for (const mov of movements) if (mov > 0 ) depositedFor.push(mov);
+
+const withdrawals = movements.filter(mov => mov < 0);
+
+console.log(withdrawals);

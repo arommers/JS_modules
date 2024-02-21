@@ -124,7 +124,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // checkDogs(julia, kate);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const eurTousd = 1.1;
 
@@ -186,16 +186,32 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(withdrawals);
 
 //accumulator is like a snowball
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
-console.log(balance);
+// console.log(balance);
 
-let sum = 0;
+// let sum = 0;
 
-for(const mov of movements)
+// for(const mov of movements)
+// {
+//   console.log(`Sum: ${sum}`);
+//   sum += mov;
+// };
+
+// console.log(sum);
+
+// =========== CODING CHALLENGE 2 =============
+
+// const moveDescrip = movements.map(
+//   (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`);
+
+const calcAveragheHumanAge = function(ages)
 {
-  console.log(`Sum: ${sum}`);
-  sum += mov;
+  const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + (age * 4));
+  const filteredAges = humanAges.filter(humanAge => humanAge >= 18);
+  let sum = filteredAges.reduce((acc, age) => acc += age, 0);
+  return sum / filteredAges.length;
 };
 
-console.log(sum);
+console.log(calcAveragheHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAveragheHumanAge([16, 6, 10, 5, 6, 1, 4]));

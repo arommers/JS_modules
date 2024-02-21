@@ -124,21 +124,47 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // checkDogs(julia, kate);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurTousd = 1.1;
+// const eurTousd = 1.1;
 
-const movementsUSD = movements.map(mov => mov * eurTousd);
+// const movementsUSD = movements.map(mov => mov * eurTousd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements)
-  movementsUSDfor.push(mov * eurTousd);
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements)
+//   movementsUSDfor.push(mov * eurTousd);
+// console.log(movementsUSDfor);
 
-const moveDescrip = movements.map(
-  (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`);
+// const moveDescrip = movements.map(
+//   (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`);
 
-console.log(moveDescrip);
+// console.log(moveDescrip);
+
+// const user = 'Steven Thomas Williams';
+// const username = user
+//   .toLowerCase()
+//   .split(' ')
+//   .map(function(name)
+//   {
+//     return name[0];
+//   })
+//   .join('');
+
+
+const createUserNames = function(acc)
+{
+  acc.forEach(function(acc)
+  {
+    acc.username = acc.owner
+    .toLocaleLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  });
+};
+
+console.log(createUserNames(accounts));
+console.log(accounts);

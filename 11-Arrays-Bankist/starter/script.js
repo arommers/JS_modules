@@ -124,7 +124,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // checkDogs(julia, kate);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const eurTousd = 1.1;
 
@@ -205,13 +205,56 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // const moveDescrip = movements.map(
 //   (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`);
 
-const calcAveragheHumanAge = function(ages)
-{
-  const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + (age * 4));
-  const filteredAges = humanAges.filter(humanAge => humanAge >= 18);
-  let sum = filteredAges.reduce((acc, age) => acc += age, 0);
-  return sum / filteredAges.length;
-};
+// const calcAveragheHumanAge = function(ages)
+// {
+//   const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + (age * 4));
+//   const filteredAges = humanAges.filter(humanAge => humanAge >= 18);
+//   let sum = filteredAges.reduce((acc, age) => acc += age, 0);
+//   return sum / filteredAges.length;
+// };
 
-console.log(calcAveragheHumanAge([5, 2, 4, 1, 15, 8, 3]));
-console.log(calcAveragheHumanAge([16, 6, 10, 5, 6, 1, 4]));
+// console.log(calcAveragheHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAveragheHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const euroToUssd = 1.1;
+
+
+// const filteredMovements = movements
+//   .filter(mov => mov > 0)
+//   // .map(mov => mov * euroToUssd)
+//   .map((mov, i, arr) => 
+//   {
+//     console.log(mov);
+//     mov * euroToUssd
+//   })
+//   .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(filteredMovements);
+
+
+// =========== CODING CHALLENGE 3 =============
+
+// const calcAveragheHumanAge = function(ages)
+// {
+//   const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + (age * 4));
+//   const filteredAges = humanAges.filter(humanAge => humanAge >= 18);
+//   let sum = filteredAges.reduce((acc, age) => acc += age, 0);
+//   return sum / filteredAges.length;
+// };
+
+// const calcAveragheHumanAge = ages => ages
+//   .map(age => age <= 2 ? 2 * age : 16 + (age * 4))
+//   .filter(humanAge => humanAge >= 18)
+//   .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+// console.log(calcAveragheHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAveragheHumanAge([16, 6, 10, 5, 6, 1, 4]))
+
+// =========== FIND =============
+
+// console.log(movements.find(mov => mov < 0));
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+

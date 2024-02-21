@@ -169,18 +169,33 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(createUserNames(accounts));
 // console.log(accounts);
 
-const deposits = movements.filter(function(mov)
+// const deposits = movements.filter(function(mov)
+// {
+//   return mov > 0;
+// })
+
+// console.log(movements);
+// console.log(deposits);
+
+// const depositedFor = [];
+
+// for (const mov of movements) if (mov > 0 ) depositedFor.push(mov);
+
+// const withdrawals = movements.filter(mov => mov < 0);
+
+// console.log(withdrawals);
+
+//accumulator is like a snowball
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(balance);
+
+let sum = 0;
+
+for(const mov of movements)
 {
-  return mov > 0;
-})
+  console.log(`Sum: ${sum}`);
+  sum += mov;
+};
 
-console.log(movements);
-console.log(deposits);
-
-const depositedFor = [];
-
-for (const mov of movements) if (mov > 0 ) depositedFor.push(mov);
-
-const withdrawals = movements.filter(mov => mov < 0);
-
-console.log(withdrawals);
+console.log(sum);

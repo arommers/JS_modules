@@ -258,3 +258,50 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 
+// ================= ALL  ARRAY METHODS =================
+
+/* 
+   ============= TO MUTATE ORIGINAL ARRAY ================
+
+  .PUSH
+  .UNSHIFT
+  .POP
+  .SHIFT
+  .SPLICE
+  .REVERSE
+  .SORT
+  .FILL
+
+  ============= TO CREATE A NEW ARRAY ================
+
+  .MAP
+  .FILTER
+  .SLICE
+  .CONCAT
+  .FLAT
+  .FLATMAP
+
+  ============= TO FIND A INDEX ================
+
+  .INDEXOF
+  .FINDINDEX
+
+  .FIND
+
+  ============= TO FIND A IF AN ARRAY INCLUDES A CERTAIN ELEMENT ================
+
+    .INCLUDES
+    .SOME
+    .EVERY
+
+  ============= TO TRANSFORM AN ARRAY TO A VALUE ================
+
+  .REDUCEC
+  .FOREACH (DOESNT CREATE A NEW ARRAY)
+
+*/
+
+
+// ======================================ARRAY EXCERCISES ===========================================
+
+const bankDepositSum = 

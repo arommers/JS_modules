@@ -255,8 +255,8 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(movements.find(mov => mov < 0));
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(account);
 
 // ================= ALL  ARRAY METHODS =================
 
@@ -304,4 +304,51 @@ console.log(account);
 
 // ======================================ARRAY EXCERCISES ===========================================
 
-const bankDepositSum = 
+// exercise 1.
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(bankDepositSum);
+
+// exercise 2.
+
+const numDeposits = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+  console.log(numDeposits);
+
+// exercise 3.
+
+const {deposits, withdrawals} = accounts.flatMap(acc => acc.movements)
+  .reduce((sums, cur) =>
+  {
+    cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+    // sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+    return sums;
+  } , 
+  {deposits: 0, withdrawals: 0});
+
+console.log(deposits, withdrawals);
+
+// exercise 4.
+
+const converTitleCase = function(title)
+{
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const capitalize = string => string[0].toUpperCase() + string.slice(1); 
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => exceptions.includes(word) ? word : capitalize(word))
+    .join(' ')
+  return capitalize(titleCase);
+};
+
+console.log(converTitleCase('this is a long title'));
+console.log(converTitleCase('this is a LONG title but not too long'));
+console.log(converTitleCase('and here is another title with an EXAMPLE'));

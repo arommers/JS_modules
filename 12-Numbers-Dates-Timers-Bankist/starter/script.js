@@ -252,70 +252,115 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-console.log(23 === 23.0);
+// console.log(23 === 23.0);
 
-console.log(+'23')
-console.log('23')
+// console.log(+'23')
+// console.log('23')
 
-//parsing
+// //parsing
 
-console.log(Number.parseInt('30px', 10));
-console.log(Number.parseInt('px30', 10));
-console.log(Number.parseFloat('2.5rem', 10));
+// console.log(Number.parseInt('30px', 10));
+// console.log(Number.parseInt('px30', 10));
+// console.log(Number.parseFloat('2.5rem', 10));
 
-// Check if value is ltereally NaN
-console.log(Number.isNaN(20));
-console.log(Number.isNaN('20'));
-console.log(Number.isNaN(+'20x'));
-console.log(Number.isNaN(23 / 0));
+// // Check if value is ltereally NaN
+// console.log(Number.isNaN(20));
+// console.log(Number.isNaN('20'));
+// console.log(Number.isNaN(+'20x'));
+// console.log(Number.isNaN(23 / 0));
 
 
-// Checking if value is a number (not a string)
-console.log(Number.isFinite(20));
-console.log(Number.isFinite('20'));
-console.log(Number.isFinite(+'20x'));
-console.log(Number.isFinite(23 / 0));
+// // Checking if value is a number (not a string)
+// console.log(Number.isFinite(20));
+// console.log(Number.isFinite('20'));
+// console.log(Number.isFinite(+'20x'));
+// console.log(Number.isFinite(23 / 0));
 
-console.log(Number.isInteger(23));
-console.log(Number.isInteger('23'));
-console.log(Number.isInteger(+'23X'));
-console.log(Number.isInteger(23 / 0));
+// console.log(Number.isInteger(23));
+// console.log(Number.isInteger('23'));
+// console.log(Number.isInteger(+'23X'));
+// console.log(Number.isInteger(23 / 0));
 
-console.log(Math.sqrt(25));
-console.log(25 ** (1 / 2));
-console.log(8 ** (1 / 3));
+// console.log(Math.sqrt(25));
+// console.log(25 ** (1 / 2));
+// console.log(8 ** (1 / 3));
 
-console.log(Math.max(5, 18, 23, 11, 2));
-console.log(Math.max(5, 18, '23', 11, 2));
-console.log(Math.min(5, 18, 23, 11, 2));
+// console.log(Math.max(5, 18, 23, 11, 2));
+// console.log(Math.max(5, 18, '23', 11, 2));
+// console.log(Math.min(5, 18, 23, 11, 2));
 
-console.log(Math.PI * Number.parseFloat('10px') ** 2);
+// console.log(Math.PI * Number.parseFloat('10px') ** 2);
 
-console.log(Math.trunc(Math.random() * 6 + 1));
+// console.log(Math.trunc(Math.random() * 6 + 1));
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
+// const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
 
-console.log(randomInt(10, 20));
+// console.log(randomInt(10, 20));
 
-// Truncating functions
+// // Truncating functions
 
-console.log(Math.round(23.3));
-console.log(Math.round(23.9));
+// console.log(Math.round(23.3));
+// console.log(Math.round(23.9));
 
-console.log(Math.ceil(23.3));
-console.log(Math.ceil(23.9));
+// console.log(Math.ceil(23.3));
+// console.log(Math.ceil(23.9));
 
-console.log(Math.floor(23.9));
-console.log(Math.floor(23.9));
+// console.log(Math.floor(23.9));
+// console.log(Math.floor(23.9));
 
-console.log(Math.trunc(23.3));
+// console.log(Math.trunc(23.3));
 
-console.log(Math.trunc(-23.3));
-console.log(Math.floor(-23.3));
+// console.log(Math.trunc(-23.3));
+// console.log(Math.floor(-23.3));
 
-// Rounding decimals
+// // Rounding decimals
 
-console.log((2.7).toFixed(0));
-console.log((2.7).toFixed(3));
-console.log((2.345).toFixed(2));
-console.log(+(2.345).toFixed(2));
+// console.log((2.7).toFixed(0));
+// console.log((2.7).toFixed(3));
+// console.log((2.345).toFixed(2));
+// console.log(+(2.345).toFixed(2));
+
+// const diameter = 287_000_000_000;
+// console.log(diameter);
+
+// const price = 435_99;
+// console.log(price);
+
+// const transferFee = 15_00;
+
+// const PI = 3.1415
+
+// // Dates and time
+
+// // create a date
+
+// // 1.
+// const now = new Date();
+// console.log(now);
+
+// // 2.
+// console.log(new Date('aug 02 2021 15:03:44'));
+// console.log(new Date('23 December. 2014'));
+// console.log(new Date(account1.movementsDates[0]));
+// console.log(new Date(2037, 10, 33, 15, 23, 5));
+// console.log(new Date(0));
+// console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// Working with dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+// current timestamp
+
+console.log(Date.now());

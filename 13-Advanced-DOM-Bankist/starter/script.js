@@ -244,9 +244,8 @@ tabsContainer.addEventListener('click', function(e)
   if (!current) return
 
   tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(tab => tab.classList.remove('operations__content--active'));
+  
   current.classList.add('operations__tab--active');
-
   document.querySelector(`.operations__content--${current.dataset.tab}`).classList.add('operations__content--active');
 });
-
-

@@ -350,17 +350,24 @@ btnSort.addEventListener('click', function (e) {
 
 const future = new Date(2037, 10, 19, 15, 23);
 
-console.log(future);
-console.log(future.getFullYear());
-console.log(future.getMonth());
-console.log(future.getDate());
-console.log(future.getDay());
-console.log(future.getHours());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
-console.log(future.toISOString());
-console.log(future.getTime());
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.toISOString());
+// console.log(future.getTime());
 
-// current timestamp
+// // current timestamp
 
-console.log(Date.now());
+// console.log(Date.now());
+
+
+console.log(Number(future));
+
+const daysPassed = (date1, date2) =>Math.abs((date1 - date2) / (1000 * 60 * 60 * 24));
+
+console.log(daysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4)));

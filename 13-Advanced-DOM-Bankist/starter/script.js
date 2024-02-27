@@ -1,6 +1,6 @@
 'use strict';
 
-/* ======================= DECLARATIONS* ======================= */
+/* ======================= SELECTIONS ======================= */
 
 const modal         = document.querySelector('.modal');
 const overlay       = document.querySelector('.overlay');
@@ -12,6 +12,8 @@ const nav           = document.querySelector('.nav');
 const tabs          = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabsContent   = document.querySelectorAll('.operations__content');
+const header        = document.querySelector('.header');
+
 
 
 /* ======================= MODAL WINDOWS ======================= */
@@ -114,15 +116,142 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 /* ======================= Sticky navigation ======================= */
 
-const stickyLine = section1.getBoundingClientRect()
+// const stickyLine = section1.getBoundingClientRect()
 
-window.addEventListener('scroll', function()
+// window.addEventListener('scroll', function()
+// {
+//   if (this.window.scrollY > stickyLine.top)
+//     nav.classList.add('sticky')
+//   else
+//     nav.classList.remove('sticky');
+// });
+
+// const obsCallback = function(entries, observer)
+// {
+//   entries.forEach(entry =>
+//     {
+//       console.log(entry);
+//     })
+// };
+// const obsOptions = 
+// {
+//   root:       null,
+//   threshold:  [0, 0.2]
+// };
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+
+// observer.observe(section1);
+
+const navHeight   = nav.getBoundingClientRect().height;
+const stickyNav = function(entries)
 {
-  if (this.window.scrollY > stickyLine.top)
-    nav.classList.add('sticky')
+  const entry = entries[0];
+  if (!entry.isIntersecting)
+    nav.classList.add('sticky');
   else
     nav.classList.remove('sticky');
+}
+
+const headerObserver = new IntersectionObserver(stickyNav,
+  {
+    root: null,
+    rootmargin: `-${navHeight}px`,
+    threshold: 0
+  });
+
+headerObserver.observe(header);
+
+/* ======================= Revealing elements on scroll ======================= */
+
+const allSections = document.querySelectorAll('.section')
+const revealSection = function(entries, observer)
+{
+  const [entry] = entries;
+  if(entry.isIntersecting)
+  {
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
+  }
+  else
+    return ;
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, 
+  {
+    root: null,
+    threshold: 0.15
+  });
+
+allSections.forEach(function(section)
+{
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
 });
+
+/* =======================  Lazy loading images ======================= */
+
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function(entries, observer)
+{
+  const [entry] = entries;
+  if(entry.isIntersecting)
+  {
+    entry.target.src = entry.target.dataset.src;
+    entry.target.addEventListener('load', function()
+    {
+      entry.target.classList.remove('lazy-img');
+    });
+  }
+  else
+    return ;
+  observer.unobserve(entry.target);
+}
+
+const imgObserver = new IntersectionObserver(loadImg, 
+  {
+    root: null,
+    rootmargin: 100,
+    threshold: 0
+  });
+
+imgTargets.forEach(img => imgObserver.observe(img));
+
+/* =======================  Slider Component ======================= */
+
+const slides    = document.querySelectorAll('.slide');
+const btnLeft   = document.querySelector('.slider__btn--left');
+const btnRight  = document.querySelector('.slider__btn--right');
+let   curSlide  = 0;
+const maxSlides = slides.length;
+
+const goToSlide = function(slide)
+{
+  slides.forEach((s, i) => s.style.transform = `translateX(${(i - slide) * 100}%)`);
+}
+
+goToSlide(0);
+const nextSlide = function()
+{
+  if (curSlide === maxSlides - 1)
+    curSlide = 0;
+  else
+    curSlide++;
+  goToSlide(curSlide);
+};
+
+const prevSlide = function()
+{
+  if (curSlide === 0)
+    curSlide = maxSlides - 1;
+  else
+    curSlide--;
+  goToSlide(curSlide);
+};
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
+
 
 /* =======================  LECTURES ======================= */
 

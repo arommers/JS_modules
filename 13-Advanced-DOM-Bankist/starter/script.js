@@ -52,6 +52,18 @@ btnScrollTo.addEventListener('click', function()
 
 /* ======================= PAGE NAVIGATION ======================= */
 
+// With event delegation
+
+document.querySelector('.nav__links').addEventListener('click', function(e)
+{
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link'))
+  {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior: 'smooth'});
+  }
+});
+
 /* without even delegation */
 
 // document.querySelectorAll('.nav__link').forEach(function(el)
@@ -64,20 +76,10 @@ btnScrollTo.addEventListener('click', function()
 //   });
 // });
 
-// With event delegation
 
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function(e)
-{
-  e.preventDefault();
-  if (e.target.classList.contains('nav__link'))
-  {
-    const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({behavior: 'smooth'});
-  }
-});
 
 /* ======================= Tabbed component ======================= */
 
@@ -116,6 +118,25 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 /* ======================= Sticky navigation ======================= */
 
+const navHeight   = nav.getBoundingClientRect().height;
+const stickyNav = function(entries)
+{
+  const entry = entries[0];
+  if (!entry.isIntersecting)
+    nav.classList.add('sticky');
+  else
+    nav.classList.remove('sticky');
+}
+
+const headerObserver = new IntersectionObserver(stickyNav,
+  {
+    root: null,
+    rootmargin: `-${navHeight}px`,
+    threshold: 0
+  });
+
+headerObserver.observe(header);
+
 // const stickyLine = section1.getBoundingClientRect()
 
 // window.addEventListener('scroll', function()
@@ -142,24 +163,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 // observer.observe(section1);
 
-const navHeight   = nav.getBoundingClientRect().height;
-const stickyNav = function(entries)
-{
-  const entry = entries[0];
-  if (!entry.isIntersecting)
-    nav.classList.add('sticky');
-  else
-    nav.classList.remove('sticky');
-}
-
-const headerObserver = new IntersectionObserver(stickyNav,
-  {
-    root: null,
-    rootmargin: `-${navHeight}px`,
-    threshold: 0
-  });
-
-headerObserver.observe(header);
 
 /* ======================= Revealing elements on scroll ======================= */
 
@@ -219,40 +222,93 @@ imgTargets.forEach(img => imgObserver.observe(img));
 
 /* =======================  Slider Component ======================= */
 
-const slides    = document.querySelectorAll('.slide');
-const btnLeft   = document.querySelector('.slider__btn--left');
-const btnRight  = document.querySelector('.slider__btn--right');
-let   curSlide  = 0;
-const maxSlides = slides.length;
-
-const goToSlide = function(slide)
+const slider = function ()
 {
-  slides.forEach((s, i) => s.style.transform = `translateX(${(i - slide) * 100}%)`);
-}
+  const slides        = document.querySelectorAll('.slide');
+  const btnLeft       = document.querySelector('.slider__btn--left');
+  const btnRight      = document.querySelector('.slider__btn--right');
+  const dotContainer  = document.querySelector('.dots');
+  let   curSlide      = 0;
+  const maxSlides     = slides.length;
 
-goToSlide(0);
-const nextSlide = function()
-{
-  if (curSlide === maxSlides - 1)
-    curSlide = 0;
-  else
-    curSlide++;
-  goToSlide(curSlide);
+  // Functions
+
+  const createDots = function ()
+  {
+    slides.forEach(function(_, i)
+    {
+      dotContainer.insertAdjacentHTML('beforeend', `<button class="dots__dot" data-slide="${i}"></button>`);
+    })
+  };
+
+  const goToSlide = function(slide)
+  {
+    slides.forEach((s, i) => s.style.transform = `translateX(${(i - slide) * 100}%)`);
+  }
+
+
+  const activateDot = function(slide)
+  {
+    document.querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+    document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active')
+  }
+
+  const nextSlide = function()
+  {
+    if (curSlide === maxSlides - 1)
+      curSlide = 0;
+    else
+      curSlide++;
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const prevSlide = function()
+  {
+    if (curSlide === 0)
+      curSlide = maxSlides - 1;
+    else
+      curSlide--;
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const init = function()
+  {
+    goToSlide(0);
+    createDots();
+    activateDot(0);
+  };
+
+  init();
+  
+  // Event handlers
+
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
+
+  document.addEventListener('keydown', function(e)
+  {
+    if (e.key === 'ArrowRight')
+      nextSlide();
+    else if (e.key === 'ArrowLeft')
+      prevSlide();
+  });
+
+  dotContainer.addEventListener('click', function(e)
+  {
+    if (e.target.classList.contains('dots__dot'))
+    {
+      const {slide} = e.target.dataset;
+      goToSlide(slide);
+      activateDot(curSlide);
+    }
+  });
 };
 
-const prevSlide = function()
-{
-  if (curSlide === 0)
-    curSlide = maxSlides - 1;
-  else
-    curSlide--;
-  goToSlide(curSlide);
-};
-
-btnRight.addEventListener('click', nextSlide);
-btnLeft.addEventListener('click', prevSlide);
-
-
+slider();
 /* =======================  LECTURES ======================= */
 
 // 187. selecting, Creating and Deleting elements

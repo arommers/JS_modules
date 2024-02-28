@@ -310,7 +310,7 @@ const slider = function ()
 
 slider();
 
-console.log("test\n");
+
 /* =======================  LECTURES ======================= */
 
 // 187. selecting, Creating and Deleting elements

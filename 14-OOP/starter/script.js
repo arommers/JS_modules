@@ -108,3 +108,128 @@ firstCar.brake();
 firstCar.brake();
 
 /* =============== 214. ES6 Classes =============== */
+
+/* =============== 214. ES6 Classes =============== */
+
+// Class expression
+
+// const PersonCl = class
+// {
+
+// };
+
+// Class declaration
+
+class PersonCl
+{
+    constructor(fullName, birthYear)
+    {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
+
+    // Methods will be added to the .protype property
+    calCage()
+    {
+        console.log(2037 - this.birthYear);
+    }
+
+    greet()
+    {
+        console.log(`Hi there I am ${this.fullName}`);
+    }
+
+    get age()
+    {
+        return 2037 - this.birthYear;
+    }
+
+    // Set a property that already excists
+    set fullName(name)
+    {
+        if (name.includes(' '))
+            this._fullName = name;
+        else
+            alert(`${name} is not a full name`)
+    }
+
+    get fullName()
+    {
+        return this._fullName;
+    }
+
+}
+
+const jessica = new PersonCl('jessica davis', 1996);
+
+PersonCl.prototype.greet = function()
+{
+    console.log(`Hey ${this.firstName}`);
+}
+
+jessica.greet();
+
+// 1. classes are not hoisted
+// 2. classes are first class citizens
+// 3. classes are executed in strict mode
+
+/* =============== 215. ES6 Classes =============== */
+
+const account = 
+{
+    owner: 'jonas',
+    movements: [1, 2, 4, 6, 6,],
+
+    get latest()
+    {
+        return this.movements.slice(-1).pop();
+    },
+
+    set latest(mov)
+    {
+        this.movements.push(mov);
+    }
+};
+
+
+class CarCl
+{
+    constructor(make, speed)
+    {
+        this.make = make;
+        this.speed = speed;
+    }
+
+    accelerate()
+    {
+        this.speed += 10;
+        console.log(`'${this.make}' going at ${this.speed} km/h`);
+    }
+
+    brake()
+    {
+        this.speed -= 5;
+        console.log(`'${this.make}' going at ${this.speed} km/h`);
+    }
+
+    get speedUs()
+    {
+        return this.speed / 1.6;
+    }
+
+    set speedUs(speed)
+    {
+        this.speed = speed * 1.6;
+    }
+}
+
+const whip = new CarCl('Ford', 120);
+console.log(whip);
+console.log(whip.speedUs);
+whip.accelerate();
+whip.accelerate();
+whip.brake();
+
+whip.speedUs = 50;
+
+console.log(whip);

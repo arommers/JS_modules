@@ -290,23 +290,95 @@ console.log(whip);
 
 /* =============== 219. Inheritance between Classes: constructor functions =============== */
 
-const Human = function(name, birthYear)
+const Human = function(firstname, birthYear)
 {
     this.firstName = this.firstName;
     this.birthYear = birthYear;
 };
 
-Person.prototype.calcAge = function()
+Human.prototype.calcAge = function()
 {
     console.log(2037 - this.birthYear);
 };
 
-const student = function(firstName, birthYear, course)
+const Student = function(firstName, birthYear, course)
 {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
+    Person.call(this, firstName, birthYear);
     this.course = course;
 }
 
-const mike = new student('mike', 2002, 'computer science');
+// Linking prototypes
+Student.prototype = Object.create(Human.prototype);
+
+Student.prototype.introduce = function()
+{
+    console.log(`My name is ${this.firstName} and I'm studying ${this.course}`);
+}
+
+const mike = new Student('mike', 2002, 'computer science');
 console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Human);
+console.log(mike instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
+
+/* =============== 220. Coding Challenge 3. =============== */
+
+// const Car = function(make, speed)
+// {
+//     this.make   = make;
+//     this.speed  = speed;
+// };
+
+// 1.
+
+const EV = function(make, speed, charge)
+{
+    Car.call(this, make, speed);
+    this.charge = charge;
+}
+
+EV.prototype = Object.create(Car.prototype);
+
+
+const tesla = new EV('Tesla', 120, 90);
+console.log(tesla);
+console.log(tesla.__proto__);
+console.log(tesla.__proto__.__proto__);
+
+// 2.
+
+EV.prototype.chargeBattery = function(chargeTo)
+{
+    this.charge = chargeTo;
+}
+
+
+console.log(tesla);
+
+// 3. 
+
+EV.prototype.accelerate = function()
+{
+    this.speed += 20;
+    this.charge *= 0.99
+    console.log(`${this.make} going at ${this.speed} km/h with a charge of ${this.charge}%`);
+}
+
+tesla.accelerate();
+tesla.accelerate();
+tesla.brake();
+tesla.chargeBattery(90);
+console.log(tesla);
+
+
+
+

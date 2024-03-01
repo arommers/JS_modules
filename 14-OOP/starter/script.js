@@ -109,8 +109,6 @@ firstCar.brake();
 
 /* =============== 214. ES6 Classes =============== */
 
-/* =============== 214. ES6 Classes =============== */
-
 // Class expression
 
 // const PersonCl = class
@@ -173,7 +171,7 @@ jessica.greet();
 // 2. classes are first class citizens
 // 3. classes are executed in strict mode
 
-/* =============== 215. ES6 Classes =============== */
+/* =============== 215. Setters and Getter =============== */
 
 const account = 
 {
@@ -190,6 +188,22 @@ const account =
         this.movements.push(mov);
     }
 };
+
+
+/* =============== 216. Static methods =============== */
+
+const adri = new Person('Adri', 1984);
+console.log(adri);
+
+Person.hey = function()
+{
+    console.log('Hey there!');
+}
+
+Person.hey();
+
+/* =============== 217. Object.create =============== */
+
 
 
 class CarCl

@@ -156,6 +156,11 @@ class PersonCl
         return this._fullName;
     }
 
+    // the static method
+    static hey()
+    {
+        console.log('Hi there');
+    }
 }
 
 const jessica = new PersonCl('jessica davis', 1996);
@@ -192,18 +197,53 @@ const account =
 
 /* =============== 216. Static methods =============== */
 
+// static methods aren't available for instances
+
 const adri = new Person('Adri', 1984);
 console.log(adri);
 
 Person.hey = function()
 {
     console.log('Hey there!');
+    console.log(this);
 }
 
 Person.hey();
 
+// this isn't working since the static hey is not inherited
+// adri.hey();
+
 /* =============== 217. Object.create =============== */
 
+const PersonProto =
+{
+    calcAge()
+    {
+        console.log(2037 - this.birthYear);
+    },
+
+    init(firstName, birthYear)
+    {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    },
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+
+steven.name = 'steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__);
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979);
+sarah.calcAge();
+
+/* =============== 218. Coding Challenge 2. =============== */
 
 
 class CarCl
@@ -247,3 +287,26 @@ whip.brake();
 whip.speedUs = 50;
 
 console.log(whip);
+
+/* =============== 219. Inheritance between Classes: constructor functions =============== */
+
+const Human = function(name, birthYear)
+{
+    this.firstName = this.firstName;
+    this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function()
+{
+    console.log(2037 - this.birthYear);
+};
+
+const student = function(firstName, birthYear, course)
+{
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+    this.course = course;
+}
+
+const mike = new student('mike', 2002, 'computer science');
+console.log(mike);

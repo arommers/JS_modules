@@ -127,7 +127,7 @@ class PersonCl
     }
 
     // Methods will be added to the .protype property
-    calCage()
+    calcAge()
     {
         console.log(2037 - this.birthYear);
     }
@@ -348,7 +348,6 @@ const EV = function(make, speed, charge)
 
 EV.prototype = Object.create(Car.prototype);
 
-
 const tesla = new EV('Tesla', 120, 90);
 console.log(tesla);
 console.log(tesla.__proto__);
@@ -379,6 +378,109 @@ tesla.brake();
 tesla.chargeBattery(90);
 console.log(tesla);
 
+/* =============== 221. Inheritance between ES6 Classes =============== */
 
+class StudentCl extends PersonCl
+{
+    constructor(fullName, birthYear, course)
+    {
+        super(fullName, birthYear);
+        this.course = course;
+    }
 
+    introduce()
+    {
+        console.log(`My name is ${this.fullName} and I'm studying ${this.course}`);
+    }
 
+    calcAge()
+    {
+        console.log(`I'm ${2037 - this.birthYear} years old, but I actually feel like ${2037 - this.birthYear + 10}`);
+    }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+martha.introduce();
+martha.calcAge();
+
+/* =============== 222. Inheritance between Classes  Object.create =============== */
+
+// const PersonProto = 
+// {
+//     calcAge()
+//     {
+//         console.log(2037 - this.birthYear);
+//     },
+
+//     init(firstName, birthYear)
+//     {
+//         this.firstName = firstName;
+//         this.birthYear = birthYear;
+//     },
+// };
+
+const stoive = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function(firstName, birthYear, course)
+{
+    PersonProto.init.call(this, firstName, birthYear);
+    this.course = course;
+}
+
+StudentProto.introduce = function()
+{
+    console.log(`My name is ${this.firstName} and I'm studying ${this.course}`);
+}
+
+const jay = Object.create(StudentProto);
+jay.init('jay', 2010, 'Computer science');
+jay.introduce();
+jay.calcAge();
+
+/* =============== 223. Another Class Example =============== */
+
+class Account
+{
+    constructor(owner, currency, pin)
+    {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account ${this.owner}`);
+    }
+
+    // Public interface of our object
+    deposit(value)
+    {
+        this.movements.push(value);
+    }
+
+    withdraw(value)
+    {
+        this.deposit(-value);
+    }
+    approveLoan(value)
+    {
+        return true;
+    }
+
+    requestLoan(value)
+    {
+        if (this.approveLoan);
+        {
+            this.deposit(1000);
+            console.log(`Loan approved`);
+        }
+    }
+
+};
+
+const acc1 = new Account('jonas', 'EUR', 1111);
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+console.log(acc1);

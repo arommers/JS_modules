@@ -258,12 +258,14 @@ class CarCl
     {
         this.speed += 10;
         console.log(`'${this.make}' going at ${this.speed} km/h`);
+        return this;
     }
 
     brake()
     {
         this.speed -= 5;
         console.log(`'${this.make}' going at ${this.speed} km/h`);
+        return this;
     }
 
     get speedUs()
@@ -446,35 +448,43 @@ class Account
     {
         this.owner = owner;
         this.currency = currency;
-        this.pin = pin;
-        this.movements = [];
+        // protected
+        this._pin = pin;
+        this._movements = [];
         this.locale = navigator.language;
 
         console.log(`Thanks for opening an account ${this.owner}`);
     }
 
     // Public interface of our object
+    getMovements()
+    {
+        return this._movements;
+    }
     deposit(value)
     {
-        this.movements.push(value);
+        this._movements.push(value);
+        return this;
     }
 
     withdraw(value)
     {
         this.deposit(-value);
+        return this;
     }
-    approveLoan(value)
+    _approveLoan(value)
     {
         return true;
     }
 
     requestLoan(value)
     {
-        if (this.approveLoan);
+        if (this._approveLoan);
         {
             this.deposit(1000);
             console.log(`Loan approved`);
         }
+        return this;
     }
 
 };
@@ -483,4 +493,120 @@ const acc1 = new Account('jonas', 'EUR', 1111);
 acc1.deposit(250);
 acc1.withdraw(140);
 acc1.requestLoan(1000);
+console.log(acc1.getMovements());
 console.log(acc1);
+
+/* =============== 225. chaining methods =============== */
+
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
+
+/* =============== 226. ES6 summary =============== */
+
+/*  - "extends" for inheritence from parent clas
+
+    - public fields => university = 'university of lisbon';
+    - private fields => #studyhours = 0;
+    - static fields => static fieldname
+
+    - constructor
+    - use "super" if inheriting
+*/
+
+/* =============== 227. Coding challenge 4 =============== */
+
+// const EV = function(make, speed, charge)
+// {
+//     Car.call(this, make, speed);
+//     this.charge = charge;
+// }
+
+// EV.prototype = Object.create(Car.prototype);
+
+// const tesla = new EV('Tesla', 120, 90);
+// console.log(tesla);
+// console.log(tesla.__proto__);
+// console.log(tesla.__proto__.__proto__);
+
+// // 2.
+
+// EV.prototype.chargeBattery = function(chargeTo)
+// {
+//     this.charge = chargeTo;
+// }
+
+
+// console.log(tesla);
+
+// // 3. 
+
+// EV.prototype.accelerate = function()
+// {
+//     this.speed += 20;
+//     this.charge *= 0.99
+//     console.log(`${this.make} going at ${this.speed} km/h with a charge of ${this.charge}%`);
+// }
+
+// class CarCl
+// {
+//     constructor(make, speed)
+//     {
+//         this.make = make;
+//         this.speed = speed;
+//     }
+
+//     accelerate()
+//     {
+//         this.speed += 10;
+//         console.log(`'${this.make}' going at ${this.speed} km/h`);
+//     }
+
+//     brake()
+//     {
+//         this.speed -= 5;
+//         console.log(`'${this.make}' going at ${this.speed} km/h`);
+//     }
+
+//     get speedUs()
+//     {
+//         return this.speed / 1.6;
+//     }
+
+//     set speedUs(speed)
+//     {
+//         this.speed = speed * 1.6;
+//     }
+// }
+
+//1.
+
+class EVCL extends CarCl
+{
+    #charge;
+
+    constructor(make, speed, charge)
+    {
+        super(make, speed);
+        this.#charge = charge;
+    }
+
+    accelerate()
+    {
+        this.speed += 20;
+        this.#charge *= 0.99;
+        console.log(`${this.make} going at ${this.speed} km/h with a charge of ${this.#charge}%`);
+        return this;
+    }
+
+    chargeBattery(charge)
+    {
+        this.#charge = charge;
+        return this;
+    }
+}
+
+const kia = new EVCL('Kia', 100, 90);
+console.log(kia)
+kia.accelerate().accelerate().accelerate().brake().brake().chargeBattery(50).accelerate();
+console.log(kia);
+console.log(kia.speedUs);

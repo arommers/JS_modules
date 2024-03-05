@@ -610,3 +610,4 @@ console.log(kia)
 kia.accelerate().accelerate().accelerate().brake().brake().chargeBattery(50).accelerate();
 console.log(kia);
 console.log(kia.speedUs);
+

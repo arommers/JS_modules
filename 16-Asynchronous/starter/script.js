@@ -206,35 +206,204 @@ const getJSON = function(url, error = 'Something went wrong')
 //     });
 // }
 
-const whereAmI = function(lat, lng)
-{
-    return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-    .then(response =>
-    {
-        if(!response.ok)
-            throw new Error(`Too many requests ${response.status}`); 
-        return response.json();
-    })
-    .then(data => 
-    {
-        console.log(data);
-        console.log(`You are in ${data.city}, ${data.country}`);
+// const whereAmI = function(lat, lng)
+// {
+//     return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//     .then(response =>
+//     {
+//         if(!response.ok)
+//             throw new Error(`Too many requests ${response.status}`); 
+//         return response.json();
+//     })
+//     .then(data => 
+//     {
+//         console.log(data);
+//         console.log(`You are in ${data.city}, ${data.country}`);
 
-        return fetch(`https://restcountries.com/v2/name/${data.country}`);
-    })
-    .then(response => 
+//         return fetch(`https://restcountries.com/v2/name/${data.country}`);
+//     })
+//     .then(response => 
+//     {
+//         if(!response.ok)
+//             throw new Error(`something went wrong getting the country`);
+//         return response.json();
+//     })
+//     .then(data => renderCountry(data[0]))
+//     .catch(error =>console.log(error.message));
+// }
+
+// whereAmI(36.2048, 138.2529);
+// // whereAmI(52.3676, 4.9041);
+// // whereAmI(52.508, 13.381);
+
+/* =============== 259. the event loop in practice =============== */
+
+// console.log('test start');
+
+// setTimeout(() => console.log("called after 0 seconds", 0));
+
+// Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+// Promise.resolve('resolved promise 2').then(res => 
+//     {
+//         for (let i = 0; i < 1000000; i++) {};
+//         console.log(res);
+//     });
+
+// console.log('test end');
+
+/* =============== 260.  Building a promise =============== */
+
+// const lotteryPromise = new Promise(function(resolve, reject)
+// {
+//     console.log('Lottery Draw is Happening');
+//     setTimeout(function()
+//     {
+//         if(Math.random() >= 0.5)
+//             resolve('You Win!');
+//         else
+//             reject(new Error('You lost your money'));
+//     }, 2000);
+// });
+
+// lotteryPromise.then(res => console.log(res)).catch(error => console.log(error));
+
+
+// Promisifying setTimeout
+// const wait = function(seconds)
+// {
+//     return new Promise(function(resolve)
+//     {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// };
+
+// wait(1).then(() => 
+// {
+//     console.log('I waited for 1 seconds');
+//     return wait(2);
+// }).then(() => 
+// {
+//     console.log('I waited for 2 seconds');
+//     return wait(3);
+// }).then(() => 
+// {
+//     console.log('I waited for 3 seconds');
+//     return wait(4);
+// }).then(() => 
+// {
+//     console.log('I waited for 4 seconds');
+//     return wait(5);
+// }).then(() => console.log('I waited for 5 second'));
+
+// Promise.resolve('abc').then((res) => console.log(res));
+// Promise.reject(new Error('someting went wrong')).catch((error) => console.error(error));
+
+// navigator.geolocation.getCurrentPosition(position =>
+// {
+//     console.log(position);
+// },
+// error =>
+// {
+//     console.error(error);
+// });
+
+// const getPosition = function()
+// {
+//     return new Promise(function(resolve, reject)
+//     {
+//         navigator.geolocation.getCurrentPosition(resolve, reject);
+//         // navigator.geolocation.getCurrentPosition(position => resolve(position),
+//         // error => reject(error));
+//     });
+// }
+
+// getPosition().then (pos => console.log(pos));
+
+// const whereAmI = function()
+// {
+//     getPosition().then(pos => 
+//     {
+//         const {latitude: lat, longitude: lng} = pos.coords;
+//         return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//     })
+//     .then(response =>
+//     {
+//         if(!response.ok)
+//             throw new Error(`Too many requests ${response.status}`); 
+//         return response.json();
+//     })
+//     .then(data => 
+//     {
+//         console.log(data);
+//         console.log(`You are in ${data.city}, ${data.country}`);
+
+//         return fetch(`https://restcountries.com/v2/name/${data.country}`);
+//     })
+//     .then(response => 
+//     {
+//         if(!response.ok)
+//             throw new Error(`something went wrong getting the country`);
+//         return response.json();
+//     })
+//     .then(data => renderCountry(data[0]))
+//     .catch(error =>console.log(error.message));
+// }
+
+// btn.addEventListener('click', whereAmI);
+
+/* =============== 262.  Coding Challenge 2. =============== */
+
+const wait = function(seconds)
+{
+    return new Promise(function(resolve)
     {
-        if(!response.ok)
-            throw new Error(`something went wrong getting the country`);
-        return response.json();
-    })
-    .then(data => renderCountry(data[0]))
-    .catch(error =>console.log(error.message));
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+
+const imgContainer = document.querySelector('.images');
+
+const createImage = function(imgPath)
+{
+    return new Promise(function(resolve, reject)
+    {
+        const img = document.createElement('img');
+        img.src = imgPath;
+
+        img.addEventListener('load', function()
+        {
+            imgContainer.append(img);
+            resolve(img);
+        });
+        img.addEventListener('error', function()
+        {
+            reject(new Error('Image not found'));
+        });
+    });
 }
 
-whereAmI(36.2048, 138.2529);
-// whereAmI(52.3676, 4.9041);
-// whereAmI(52.508, 13.381);
+let currentImg;
 
-/* =============== 258. Async behind the scenes =============== */
+createImage('img/img-1.jpg')
+.then(img => 
+{
+    console.log('Image 1 loaded');
+    currentImg = img;
+    return wait(2)
+})
+.then(() => 
+{
+    currentImg.style.display = 'none';
+    return createImage('img/img-2.jpg')
+})
+.then(img => 
+{
+    console.log('Image 2 loaded');
+    currentImg = img;
+    return wait(2)
+})
+.then(() => currentImg.style.display = 'none')
+.catch(error => console.log(error));
 
+ 

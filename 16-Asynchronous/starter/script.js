@@ -390,20 +390,25 @@ createImage('img/img-1.jpg')
 {
     console.log('Image 1 loaded');
     currentImg = img;
-    return wait(2)
+    return wait(2);
 })
 .then(() => 
 {
     currentImg.style.display = 'none';
-    return createImage('img/img-2.jpg')
+    return createImage('img/img-2.jpg');
 })
 .then(img => 
 {
     console.log('Image 2 loaded');
     currentImg = img;
-    return wait(2)
+    return wait(2);
 })
-.then(() => currentImg.style.display = 'none')
+.then(() => 
+{
+    currentImg.style.display = 'none';
+    return createImage('img/img-1.jpg');
+})
+.then(() => {})
 .catch(error => console.log(error));
 
  
